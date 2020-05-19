@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <% include partials/head %> 
+</head>
+<body>
+<% include partials/menu %>
+<div class="container-fluid bg-3 text-center">    
+  <h3><%= page %></h3><br>
+  <div class="row">
+    <form action='../<%=product._id %>/update' method='POST'>
+        <input type="text" name="_id" placeholder="_id" readonly value="<%=product._id %>"><br>
+      <input type='text' name='name' placeholder="name" required value="<%=product.name %>"><br>
+      <input type="number" name='price' placeholder="price" required value="<%=product.price %>"><br>
+      <input type="submit" value="Update Product">
+    </form>
+  </div>
+</div>
+</body>
+<% include partials/script %>
+</html>
