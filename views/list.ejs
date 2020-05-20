@@ -28,14 +28,14 @@
                 <td><%=product.price %></td>
                 <td>
                     <form action="updateform/<%=product._id %>" method="POST">
-                        <button type="submit">Update</button>
+                        <button type="submit">Update Product</button>
                     </form>
                 </td>
                 <td>
                     <form action="<%=product._id %>/delete" method="post"> 
-                        <button type="submit">Delete</button>
+                        <button type="submit">Delete Product</button>
                     </form>
-                </td>
+                </td> 
             </tr>
 
           <% }); %>
