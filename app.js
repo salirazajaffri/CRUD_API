@@ -14,10 +14,21 @@ const product = require('./routes/product.route')
 var indexRouter = require('./routes/index');
 const session=require('express-session');
 const SESS_NAME='sid';
-//const user=require('./routes/user.routes');
+const user=require('./routes/user.route');
 //var usersRouter = require('./routes/users');
 
 var app = express();
+
+app.use(session(
+  { 
+    name:SESS_NAME,
+  secret: 'random message', //this is needed for making a session key
+  saveUninitialized: false, //for login sessions set it to false, setting to true means store blank sessions
+  resave: false,
+  cookie: {
+  expires: 600000 //or use maxAge ( takes in milliseconds value)
+  } }
+) );
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,7 +41,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-//app.use('/users', user);
+app.use('/users', user);
 //app.use('/users', usersRouter);
 
 //.............................................................
